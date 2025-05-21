@@ -56,7 +56,7 @@ body::before {
 
 /* HEADER*/
 header {
-    background: linear-gradient(145deg, #f9d3ff86, #c704a64b);  
+    background: linear-gradient(145deg, #ea87f986, #6704b84b);  
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     position: fixed;
@@ -201,75 +201,20 @@ header .container {
 }
 
 
-.menu-toggle {
-    display: none; 
-}
-
 nav ul {
-    list-style: none;
-    padding: 0;
-    background: linear-gradient(100deg, #6a0dad, #8600b3);
-    border-radius: 10px;
-    display: flex;
-    gap: 15px;
-    position: relative;
-    z-index: 1000;
-    flex-wrap: nowrap; 
+  list-style: none;
+  display: flex;
+  gap: 20px;
 }
 
-@media screen and (max-width: 1204px) {
-    nav ul {
-        display: flex;
-        flex-wrap: wrap;  
-        justify-content: center;  
-        gap: 10px;  
-    }
-
-    nav ul.open {
-        display: flex;
-        flex-direction: column;
-    }
-
-    nav ul li {
-        font-size: 1rem;  
-        flex-grow: 1;  
-        text-align: center;  
-    }
-    nav ul li a {
-        padding: 8px 12px;  
-    }
-
-    .submenu {
-        width: 100%; 
-    }
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
 }
 
-@media screen and (max-width: 768px) {
-
-    nav ul {
-        display: none;
-    }
-
-    nav ul.open {
-        display: flex; 
-        flex-direction: column; 
-    }
-
-    header {
-        height: 10%; 
-    }
-
-    .logo img {
-        height: 55px; 
-        width: 155px; 
-    }
-
-    .menu-toggle-icon {
-        font-size: 30px; 
-        background: linear-gradient(45deg, #6800a3, #90afff); 
-        -webkit-background-clip: text;  
-    }
-
+#qrContainer {
+  display: block;
 }
 
 nav ul {
@@ -292,7 +237,7 @@ nav ul li {
 /* TEXTO MENU*/
 nav ul li a {
     text-decoration: none;
-    font-size: 15px;
+    font-size: 14px;
     font-family: 'Shadows Into Light', cursive;
     color: #ffffff;
     padding: 10px;
@@ -316,7 +261,7 @@ nav ul li a:hover {
     left: 0;
     background: linear-gradient(180deg, #6a0dad, #f265ff);
     border-radius: 10px;
-    width: 220px;
+    width: 165px;
     opacity: 0;
     visibility: hidden;
     transition: none 0.5s ease;
@@ -631,30 +576,127 @@ footer {
     filter: brightness(1.5);
 }
 
-/*DISEÑO RESPONSIVO*/
+
+
+/* DISEÑO RESPONSIVO */
 @media (max-width: 768px) {
+
+    /* Cambia el layout del header a columna y centra el texto */
     header .container {
         flex-direction: column;
         text-align: center;
     }
 
+    /* Oculta el menú de navegación y lo posiciona hacia la izquierda */
     nav ul {
         flex-direction: column;
-        display: none;
+        display: none; /* Oculta por defecto */
+        position: relative;
+        left: -100px; /* Mueve el menú hacia la izquierda */
+        width: calc(100% + 20px); /* Aumenta el ancho para compensar el desplazamiento */
+        padding-left: 20px; /* Agrega espacio a la izquierda para el texto */
+        box-sizing: border-box;
     }
 
+    /* Estilos cuando el menú está abierto (por ejemplo, con una clase "open") */
     nav ul.open {
-        display: flex;
+        display: flex; /* Muestra el menú */
+        flex-direction: column;
+        opacity: 1;
+        transform: translateY(0); /* Sin desplazamiento vertical */
+        transition: opacity 0.5s ease, transform 0.5s ease; /* Transiciones suaves */
     }
 
+    /* Espaciado entre elementos del menú y alinea texto a la izquierda */
     nav ul li {
         margin: 10px 0;
+        text-align: left;
     }
 
+    /* Ajustes para los submenús en vista móvil */
+    nav ul ul {
+        left: 0;
+        margin-left: 10px; /* Desplaza ligeramente los submenús */
+    }
+
+    /* Muestra el botón para abrir/cerrar el menú en móviles */
     .menu-toggle {
         display: block;
-        margin-top: 10px;
+        align-self: flex-start; /* Alinea a la izquierda */
+        margin-top: -35px;
+        margin-left: 10px;
     }
+
+    /* Estilo del ícono del botón de menú */
+    .menu-toggle-icon {
+        font-size: 30px;
+        background: linear-gradient(45deg, #6800a3, #90afff); /* Gradiente de color */
+        -webkit-background-clip: text; /* Aplica el gradiente solo al texto */
+    }
+
+    /* Rota el ícono cuando el menú está abierto */
+    .menu-toggle.open {
+        transform: rotate(90deg);
+        transition: transform 0.3s ease;
+    }
+
+    /* Cambia el ícono (por ejemplo, a una X) cuando el menú está abierto */
+    .menu-toggle.open i::before {
+        content: "\f00d"; /* Ícono "X" de Font Awesome */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+    }
+
+    /* Estilo del footer en móviles */
+    footer {
+        width: 95%;
+        border-radius: 80px; /* Bordes redondeados */
+    }
+
+    /* Cambia el layout del contenido del footer a columna */
+    .footer-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Estilo base de los submenús */
+    .submenu {
+        position: absolute;
+        margin-top: -1px;
+        top: 100%; /* Aparece justo debajo del elemento padre */
+        left: 0;
+        background: linear-gradient(180deg, #6a0dad, #f265ff); /* Fondo degradado */
+        border-radius: 10px;
+        width: 170px;
+        opacity: 0; /* Oculto por defecto */
+        visibility: hidden; /* No visible */
+        transition: none 0.5s ease; /* Sin transición en este breakpoint */
+        z-index: 1001;
+    }
+
+    /* Submenú de segundo nivel (submenu dentro de otro submenu) */
+    .submenu-nivel-2 {
+        top: 0;
+        left: 100%; /* Se posiciona a la derecha del submenu padre */
+        margin-left: -1px;
+        background: linear-gradient(180deg, #5a0a9d, #b4009e); /* Otro degradado */
+    }
+
+    /* Estilo del texto de los ítems del menú */
+    nav ul li a {
+        text-decoration: none;
+        font-size: 13px;
+        font-family: 'Shadows Into Light', cursive; /* Fuente manuscrita */
+        color: #ffffff;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 8px;
+        transition: all 0.3s ease; /* Transición suave al interactuar */
+    }
+
+}
 
     /*SLIDER RESPONSIVO*/
     .slide-content h1 {
@@ -726,4 +768,4 @@ footer {
         flex-direction: column;
         gap: 10px;
     }
-}
+

@@ -103,8 +103,10 @@ header .container {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     border: 2px solid #9900ff;
     z-index: 1000;
-    animation: bounce 2.5s infinite;
-    overflow: hidden; 
+    overflow: hidden;
+    transform: scale(1);
+    transform-origin: bottom right; /* punto de origen fijo */
+    transition: transform 0.5s ease-in-out;
 }
 
 @keyframes bounce {
@@ -121,6 +123,50 @@ header .container {
     object-fit: cover;
     display: block;
     transform: scaleX(1.2);
+}
+
+.qr-container.hide {
+    transform: scale(0); /* Hace que el QR se oculte */
+    transform-origin: bottom right;  /* Asegura que el punto de escalado esté en la esquina inferior derecha */
+}
+
+.qr-toggle-btn {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background-color: #9900ff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.qr-toggle-btn:hover {
+    background: #7a00cc;
+}
+
+@keyframes showQR {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.qr-container.show {
+    transform: scale(1); /* Muestra el QR */
+    transform-origin: bottom right; /* Asegura que el punto de escalado esté en la esquina inferior derecha */
 }
 
 /*MENÚ*/

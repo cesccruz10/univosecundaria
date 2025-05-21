@@ -606,6 +606,11 @@ footer {
     nav ul {
         flex-direction: column;
         display: none;
+        position: relative;
+        left: -100px; /* Mueve el menú hacia la izquierda */
+        width: calc(100% + 20px); /* Ajusta el ancho para compensar el desplazamiento */
+        padding-left: 20px; /* Añade padding para mantener la alineación del texto */
+        box-sizing: border-box;
     }
 
     nav ul.open {
@@ -618,11 +623,20 @@ footer {
 
     nav ul li {
         margin: 10px 0;
+        text-align: left; /* Alinea el texto a la izquierda */
+    }
+
+    /* Ajusta los submenús si los tienes */
+    nav ul ul {
+        left: 0;
+        margin-left: 10px;
     }
 
     .menu-toggle {
         display: block;
-        margin-top: 10px;
+        align-self: flex-start; /* Alinea el botón del menú a la izquierda */
+        margin-top: -35px;
+        margin-left: 10px; /* Mueve el botón del menú más a la izquierda */
     }
 
     .menu-toggle-icon {
@@ -631,10 +645,15 @@ footer {
         -webkit-background-clip: text;  
     }
 
-
     .menu-toggle.open {
         transform: rotate(90deg);
         transition: transform 0.3s ease;
+    }
+
+    .menu-toggle.open i::before {
+        content: "\f00d"; 
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
     }
    
     footer {

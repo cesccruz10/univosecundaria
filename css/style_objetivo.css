@@ -103,8 +103,10 @@ header .container {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     border: 2px solid #9900ff;
     z-index: 1000;
-    animation: bounce 2.5s infinite;
-    overflow: hidden; 
+    overflow: hidden;
+    transform: scale(1);
+    transform-origin: bottom right; /* punto de origen fijo */
+    transition: transform 0.5s ease-in-out;
 }
 
 @keyframes bounce {
@@ -121,6 +123,50 @@ header .container {
     object-fit: cover;
     display: block;
     transform: scaleX(1.2);
+}
+
+.qr-container.hide {
+    transform: scale(0); /* Hace que el QR se oculte */
+    transform-origin: bottom right;  /* Asegura que el punto de escalado esté en la esquina inferior derecha */
+}
+
+.qr-toggle-btn {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background-color: #9900ff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.qr-toggle-btn:hover {
+    background: #7a00cc;
+}
+
+@keyframes showQR {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.qr-container.show {
+    transform: scale(1); /* Muestra el QR */
+    transform-origin: bottom right; /* Asegura que el punto de escalado esté en la esquina inferior derecha */
 }
 
 /*MENU*/
@@ -560,6 +606,11 @@ footer {
     nav ul {
         flex-direction: column;
         display: none;
+        position: relative;
+        left: -100px; /* Mueve el menú hacia la izquierda */
+        width: calc(100% + 20px); /* Ajusta el ancho para compensar el desplazamiento */
+        padding-left: 20px; /* Añade padding para mantener la alineación del texto */
+        box-sizing: border-box;
     }
 
     nav ul.open {
@@ -572,11 +623,20 @@ footer {
 
     nav ul li {
         margin: 10px 0;
+        text-align: left; /* Alinea el texto a la izquierda */
+    }
+
+    /* Ajusta los submenús si los tienes */
+    nav ul ul {
+        left: 0;
+        margin-left: 10px;
     }
 
     .menu-toggle {
         display: block;
-        margin-top: 10px;
+        align-self: flex-start; /* Alinea el botón del menú a la izquierda */
+        margin-top: -35px;
+        margin-left: 10px; /* Mueve el botón del menú más a la izquierda */
     }
 
     .menu-toggle-icon {
@@ -585,19 +645,29 @@ footer {
         -webkit-background-clip: text;  
     }
 
-
     .menu-toggle.open {
         transform: rotate(90deg);
         transition: transform 0.3s ease;
+    }
+
+    .menu-toggle.open i::before {
+        content: "\f00d"; 
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
     }
    
     footer {
         width: 95%;
         border-radius: 80px;
+        margin: 10px
     }
 
     .footer-content {
         flex-direction: column;
         gap: 10px;
     }
+
+    .historia-container {
+    margin: 120px auto 0 auto;
+}
 }
