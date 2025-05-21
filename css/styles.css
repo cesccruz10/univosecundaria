@@ -793,4 +793,9 @@ footer {
         flex-direction: column;
         gap: 10px;
     }
+
+    .footer-content p {
+    font-size: 14px;
+    font-family: 'Shadows Into Light';
+}
 }
