@@ -5,14 +5,14 @@
     --color-purpura: #6a0dad;
     --color-gris-claro: #f2f2f2;
     --color-gris-oscuro: #333;
-    
+
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+
 }
 
 body {
@@ -21,13 +21,13 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     background: url('../img/img/pics/IMG_2025.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
 .hero {
-    margin-top: 80px; 
+    margin-top: 80px;
 }
 
 
@@ -39,18 +39,18 @@ body {
 
 /*HEADER*/
 header {
-    background: linear-gradient(145deg, #ea87f986, #6704b84b);  
+    background: linear-gradient(145deg, #ea87f986, #6704b84b);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     position: fixed;
-    width: 88%; 
-    max-width: 1200px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    top: 10px; 
-    border-radius: 20px 25px 20px 25px; 
+    width: 88%;
+    max-width: 1200px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+    border-radius: 20px 25px 20px 25px;
     z-index: 1000;
-    padding: 0.8rem 0; 
+    padding: 0.8rem 0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
 }
@@ -64,9 +64,10 @@ header .container {
 .logo {
     height: 50px;
 }
+
 .logo img {
-    height: 60px; 
-    width: 298px; 
+    height: 60px;
+    width: 298px;
 }
 
 /*LOGO GEU*/
@@ -75,17 +76,18 @@ header .container {
     top: 10px;
     right: 30px;
     z-index: 999;
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
 }
 
 .logoGEU img {
-    max-width: 100px; 
+    max-width: 100px;
     width: 100%;
     height: auto;
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
 }
+
 .logoGEU img:hover {
-    transform: scale(1.1); 
+    transform: scale(1.1);
 }
 
 /*QR CODE*/
@@ -105,16 +107,31 @@ header .container {
     z-index: 1000;
     overflow: hidden;
     transform: scale(1);
-    transform-origin: bottom right; /* punto de origen fijo */
+    transform-origin: bottom right;
+    /* punto de origen fijo */
     transition: transform 0.5s ease-in-out;
 }
 
 @keyframes bounce {
-    0%   { transform: translateY(0); }
-    30%  { transform: translateY(-4px); }
-    50%  { transform: translateY(3px); }
-    70%  { transform: translateY(-3px); }
-    100% { transform: translateY(0); }
+    0% {
+        transform: translateY(0);
+    }
+
+    30% {
+        transform: translateY(-4px);
+    }
+
+    50% {
+        transform: translateY(3px);
+    }
+
+    70% {
+        transform: translateY(-3px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .qr-container img {
@@ -126,8 +143,10 @@ header .container {
 }
 
 .qr-container.hide {
-    transform: scale(0); /* Hace que el QR se oculte */
-    transform-origin: bottom right;  /* Asegura que el punto de escalado esté en la esquina inferior derecha */
+    transform: scale(0);
+    /* Hace que el QR se oculte */
+    transform-origin: bottom right;
+    /* Asegura que el punto de escalado esté en la esquina inferior derecha */
 }
 
 .qr-toggle-btn {
@@ -140,7 +159,7 @@ header .container {
     color: white;
     border: none;
     border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     display: none;
     align-items: center;
     justify-content: center;
@@ -158,6 +177,7 @@ header .container {
         opacity: 0;
         transform: scale(0.5);
     }
+
     100% {
         opacity: 1;
         transform: scale(1);
@@ -165,22 +185,24 @@ header .container {
 }
 
 .qr-container.show {
-    transform: scale(1); /* Muestra el QR */
-    transform-origin: bottom right; /* Asegura que el punto de escalado esté en la esquina inferior derecha */
+    transform: scale(1);
+    /* Muestra el QR */
+    transform-origin: bottom right;
+    /* Asegura que el punto de escalado esté en la esquina inferior derecha */
 }
 
 
 /*MENU*/
 
 #menuToggle {
-    display: none 
+    display: none
 }
 
 .menu-toggle-icon {
-    font-size: 20px; 
-    background: linear-gradient(45deg, #6108de, #ff4ec4); 
-    -webkit-background-clip: text; 
-    color: transparent; 
+    font-size: 20px;
+    background: linear-gradient(45deg, #6108de, #ff4ec4);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 nav ul {
@@ -192,16 +214,16 @@ nav ul {
     gap: 15px;
     position: relative;
     z-index: 1000;
-    flex-wrap: nowrap; 
+    flex-wrap: nowrap;
 }
 
 
 @media screen and (max-width: 1204px) {
     nav ul {
         display: flex;
-        flex-wrap: wrap;  
-        justify-content: center;  
-        gap: 10px;  
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
     }
 
     nav ul.open {
@@ -210,16 +232,17 @@ nav ul {
     }
 
     nav ul li {
-        font-size: 1rem;  
-        flex-grow: 1;  
-        text-align: center;  
+        font-size: 1rem;
+        flex-grow: 1;
+        text-align: center;
     }
+
     nav ul li a {
-        padding: 8px 12px;  
+        padding: 8px 12px;
     }
 
     .submenu {
-        width: 100%; 
+        width: 100%;
     }
 }
 
@@ -233,10 +256,10 @@ nav ul {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 100%; 
+        top: 100%;
         left: 0;
         width: 100%;
-        background-color: #fff; 
+        background-color: #fff;
         z-index: 1000;
         padding: 1rem 0;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -252,7 +275,7 @@ nav ul {
     }
 
     .menu-toggle.open i::before {
-        content: "\f00d"; 
+        content: "\f00d";
         font-family: "Font Awesome 6 Free";
         font-weight: 900;
     }
@@ -313,25 +336,25 @@ nav ul li a:hover {
     background: linear-gradient(180deg, #5a0a9d, #b4009e);
 }
 
-nav ul li:hover > .submenu,
+nav ul li:hover>.submenu,
 nav ul li .submenu:hover {
     opacity: 1;
     visibility: visible;
 }
 
-.submenu li:hover > .submenu-nivel-2,
+.submenu li:hover>.submenu-nivel-2,
 .submenu-nivel-2:hover {
     opacity: 1;
     visibility: visible;
 }
 
 /*FLECHAS INDICADORAS*/
-.dropdown > a > .fa-angle-right {
+.dropdown>a>.fa-angle-right {
     margin-left: auto;
     transition: transform 0.3s;
 }
 
-.dropdown:hover > a > .fa-angle-right {
+.dropdown:hover>a>.fa-angle-right {
     transform: rotate(90deg);
 }
 
@@ -352,14 +375,14 @@ nav ul li .submenu:hover {
     z-index: 999;
 }
 
-.submenu li:hover > .submenu {
+.submenu li:hover>.submenu {
     opacity: 1;
     max-height: 500px;
     visibility: visible;
 }
 
 .dropdown:hover .submenu {
-    max-height: 18.75rem; 
+    max-height: 18.75rem;
     opacity: 1;
 }
 
@@ -398,10 +421,10 @@ nav .dropdown {
     position: relative;
 }
 
-nav .dropdown:hover > .submenu {
+nav .dropdown:hover>.submenu {
     visibility: visible;
     opacity: 1;
-    max-height: 500px; 
+    max-height: 500px;
     transform: translateY(0);
 }
 
@@ -423,12 +446,12 @@ nav .submenu li a {
 }
 
 nav .submenu li a:hover {
-    background-color: rgb(104, 17, 180); 
+    background-color: rgb(104, 17, 180);
     color: rgb(255, 255, 255);
 }
 
 nav ul li:hover .submenu {
-    display: block; 
+    display: block;
 }
 
 /*HISTORIA*/
@@ -497,15 +520,20 @@ nav ul li:hover .submenu {
 }
 
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     letter-spacing: 1.5px;
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
 }
 
-p, span, li, a {
+p,
+span,
+li,
+a {
     color: #4d008b;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
     font-family: 'Shadows Into Light', cursive;
@@ -523,16 +551,16 @@ p, span, li, a {
 
 /*FOOTER*/
 footer {
-    background: linear-gradient(80deg, #5a0a9d, #b4009e); 
-    max-width: 400px;  
-    width: 100%;  
-    height: 90px;     
+    background: linear-gradient(80deg, #5a0a9d, #b4009e);
+    max-width: 400px;
+    width: 100%;
+    height: 90px;
     backdrop-filter: blur(1px);
     -webkit-backdrop-filter: blur(1px);
     color: var(--color-blanco);
     text-align: center;
     padding: 1rem 0;
-    margin: 2rem auto 0;  
+    margin: 2rem auto 0;
     border-radius: 50px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
@@ -541,13 +569,13 @@ footer {
 .footer-content p,
 .footer-content a,
 .footer-content span {
-    color: #ffffff; 
-    text-shadow: none; 
+    color: #ffffff;
+    text-shadow: none;
 }
 
 .footer-content {
     display: flex;
-    justify-content: center;  
+    justify-content: center;
     align-items: center;
     gap: 1px;
     flex-wrap: wrap;
@@ -564,6 +592,7 @@ footer {
     flex-wrap: wrap;
     justify-content: center;
 }
+
 .social-media a img {
     width: 30px;
     height: 30px;
@@ -592,8 +621,9 @@ footer {
 .btn:hover {
     background-color: #5a0a9d;
 }
+
 .menu-toggle {
-    display: none; 
+    display: none;
 }
 
 /* DISEÑO RESPONSIVO */
@@ -608,21 +638,28 @@ footer {
     /* Oculta el menú de navegación y lo posiciona hacia la izquierda */
     nav ul {
         flex-direction: column;
-        display: none; /* Oculta por defecto */
+        display: none;
+        /* Oculta por defecto */
         position: relative;
-        left: -100px; /* Mueve el menú hacia la izquierda */
-        width: calc(100% + 20px); /* Aumenta el ancho para compensar el desplazamiento */
-        padding-left: 20px; /* Agrega espacio a la izquierda para el texto */
+        left: -100px;
+        /* Mueve el menú hacia la izquierda */
+        width: calc(100% + 20px);
+        /* Aumenta el ancho para compensar el desplazamiento */
+        padding-left: 20px;
+        /* Agrega espacio a la izquierda para el texto */
         box-sizing: border-box;
     }
 
     /* Estilos cuando el menú está abierto (por ejemplo, con una clase "open") */
     nav ul.open {
-        display: flex; /* Muestra el menú */
+        display: flex;
+        /* Muestra el menú */
         flex-direction: column;
         opacity: 1;
-        transform: translateY(0); /* Sin desplazamiento vertical */
-        transition: opacity 0.5s ease, transform 0.5s ease; /* Transiciones suaves */
+        transform: translateY(0);
+        /* Sin desplazamiento vertical */
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        /* Transiciones suaves */
     }
 
     /* Espaciado entre elementos del menú y alinea texto a la izquierda */
@@ -634,13 +671,15 @@ footer {
     /* Ajustes para los submenús en vista móvil */
     nav ul ul {
         left: 0;
-        margin-left: 10px; /* Desplaza ligeramente los submenús */
+        margin-left: 10px;
+        /* Desplaza ligeramente los submenús */
     }
 
     /* Muestra el botón para abrir/cerrar el menú en móviles */
     .menu-toggle {
         display: block;
-        align-self: flex-start; /* Alinea a la izquierda */
+        align-self: flex-start;
+        /* Alinea a la izquierda */
         margin-top: -35px;
         margin-left: 10px;
     }
@@ -648,8 +687,10 @@ footer {
     /* Estilo del ícono del botón de menú */
     .menu-toggle-icon {
         font-size: 30px;
-        background: linear-gradient(45deg, #6800a3, #90afff); /* Gradiente de color */
-        -webkit-background-clip: text; /* Aplica el gradiente solo al texto */
+        background: linear-gradient(45deg, #6800a3, #90afff);
+        /* Gradiente de color */
+        -webkit-background-clip: text;
+        /* Aplica el gradiente solo al texto */
     }
 
     /* Rota el ícono cuando el menú está abierto */
@@ -660,7 +701,8 @@ footer {
 
     /* Cambia el ícono (por ejemplo, a una X) cuando el menú está abierto */
     .menu-toggle.open i::before {
-        content: "\f00d"; /* Ícono "X" de Font Awesome */
+        content: "\f00d";
+        /* Ícono "X" de Font Awesome */
         font-family: "Font Awesome 6 Free";
         font-weight: 900;
     }
@@ -668,7 +710,8 @@ footer {
     /* Estilo del footer en móviles */
     footer {
         width: 95%;
-        border-radius: 80px; /* Bordes redondeados */
+        border-radius: 80px;
+        /* Bordes redondeados */
     }
 
     /* Cambia el layout del contenido del footer a columna */
@@ -681,50 +724,66 @@ footer {
     .submenu {
         position: absolute;
         margin-top: -1px;
-        top: 100%; /* Aparece justo debajo del elemento padre */
+        top: 100%;
+        /* Aparece justo debajo del elemento padre */
         left: 0;
-        background: linear-gradient(180deg, #6a0dad, #f265ff); /* Fondo degradado */
+        background: linear-gradient(180deg, #6a0dad, #f265ff);
+        /* Fondo degradado */
         border-radius: 10px;
         width: 170px;
-        opacity: 0; /* Oculto por defecto */
-        visibility: hidden; /* No visible */
-        transition: none 0.5s ease; /* Sin transición en este breakpoint */
+        opacity: 0;
+        /* Oculto por defecto */
+        visibility: hidden;
+        /* No visible */
+        transition: none 0.5s ease;
+        /* Sin transición en este breakpoint */
         z-index: 1001;
     }
 
     /* Submenú de segundo nivel (submenu dentro de otro submenu) */
     .submenu-nivel-2 {
         top: 0;
-        left: 100%; /* Se posiciona a la derecha del submenu padre */
+        left: 100%;
+        /* Se posiciona a la derecha del submenu padre */
         margin-left: -1px;
-        background: linear-gradient(180deg, #5a0a9d, #b4009e); /* Otro degradado */
+        background: linear-gradient(180deg, #5a0a9d, #b4009e);
+        /* Otro degradado */
     }
 
     /* Estilo del texto de los ítems del menú */
     nav ul li a {
         text-decoration: none;
         font-size: 13px;
-        font-family: 'Shadows Into Light', cursive; /* Fuente manuscrita */
+        font-family: 'Shadows Into Light', cursive;
+        /* Fuente manuscrita */
         color: #ffffff;
         padding: 10px;
         display: flex;
         align-items: center;
         gap: 8px;
         border-radius: 8px;
-        transition: all 0.3s ease; /* Transición suave al interactuar */
+        transition: all 0.3s ease;
+        /* Transición suave al interactuar */
     }
 
     .logo {
         height: 50px;
-}
+    }
+
     .logo img {
-        height: 60px; 
+        height: 60px;
         width: 250px;
         margin-left: 80px;
-}
+    }
 
-/*LOGO GEU*/
-.logoGEU {
-    display: none;
-}
+    /*LOGO GEU*/
+    .logoGEU {
+        display: none;
+    }
+
+    /*FOOTER*/
+    .footer-content p {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+    }
 }
