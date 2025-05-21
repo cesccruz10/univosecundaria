@@ -703,4 +703,18 @@ footer {
     transform: scale(1.01);
 }
 
+    .logo {
+        height: 50px;
+}
+    .logo img {
+        height: 60px; 
+        width: 250px;
+        margin-left: 80px;
+}
+
+/*LOGO GEU*/
+.logoGEU {
+    display: none;
+}
+
 }

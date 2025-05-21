@@ -696,6 +696,31 @@ footer {
         transition: all 0.3s ease; /* Transición suave al interactuar */
     }
 
+    .logo {
+        height: 50px;
+}
+    .logo img {
+        height: 60px; 
+        width: 250px;
+        margin-left: 80px;
+}
+
+/*LOGO GEU*/
+.logoGEU {
+    position: absolute;
+    top: 495px;    
+    right: 300px;  
+    z-index: 999;  
+}
+
+.logoGEU img {
+    max-width: 100px; 
+    width: 80%;
+    height: auto;
+    transition: transform 0.3s ease; 
+}
+.logoGEU {
+    display: none;
 }
 
     /*SLIDER RESPONSIVO*/
@@ -768,4 +793,4 @@ footer {
         flex-direction: column;
         gap: 10px;
     }
-
+}
