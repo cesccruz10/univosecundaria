@@ -39,7 +39,8 @@
                         <ul class="submenu">
                             <li><a href="Plan_estudios.html"><i class="fas fa-list-alt"></i> Plan de estudios</a></li>
                             <li><a href="Clubes.html"><i class="fas fa-users"></i> Club's</a></li>
-                            <li><a href="Programas_ad.html"><i class="fas fa-user-check"></i> Programas Adicionales</a></li>
+                            <li><a href="Programas_ad.html"><i class="fas fa-user-check"></i> Programas Adicionales</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -68,13 +69,17 @@
                         <a href="#"><i class="fas fa-unlock"></i>Accesos</a>
                         <ul class="submenu">
                             <li class="dropdown">
-                                <a href="#"><i class="fas fa-user-graduate"></i>SISE <i class="fas fa-angle-right"></i></a>
+                                <a href="#"><i class="fas fa-user-graduate"></i>SISE <i
+                                        class="fas fa-angle-right"></i></a>
                                 <ul class="submenu submenu-nivel-2">
-                                    <li><a href="https://sise.univo.edu.mx/SISEWEB/WebSecundaria/SiseSecundaria/Autenticacion.php" target="_blank">Alumnos</a></li>
-                                    <li><a href="https://sise.univo.edu.mx/WEB2/SISE/DocentesSecundaria/Autenticacion.php" target="_blank">Docentes UNIVO</a></li>
+                                    <li><a href="https://sise.univo.edu.mx/SISEWEB/WebSecundaria/SiseSecundaria/Autenticacion.php"
+                                            target="_blank">Alumnos</a></li>
+                                    <li><a href="https://sise.univo.edu.mx/WEB2/SISE/DocentesSecundaria/Autenticacion.php"
+                                            target="_blank">Docentes UNIVO</a></li>
                                 </ul>
                             </li>
-                            <li><a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.google.com%2F&dsh=S386640387%3A1747163369708683&ec=futura_exp_og_so_72776762_e&flowEntry=ServiceLogin&flowName=GlifWebSignIn&hl=es&ifkv=ASKV5Mj3yNoU58pn3MsQMH4ERq_7RCoOrwT6i_ayp4Sf9IytJhcxicNUs_OFEd2TfiQbo1zh6q3oiA" target="_blank"><i class="fas fa-envelope"></i> Correo</a></li>
+                            <li><a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.google.com%2F&dsh=S386640387%3A1747163369708683&ec=futura_exp_og_so_72776762_e&flowEntry=ServiceLogin&flowName=GlifWebSignIn&hl=es&ifkv=ASKV5Mj3yNoU58pn3MsQMH4ERq_7RCoOrwT6i_ayp4Sf9IytJhcxicNUs_OFEd2TfiQbo1zh6q3oiA"
+                                    target="_blank"><i class="fas fa-envelope"></i> Correo</a></li>
                         </ul>
                     </li>
                     <li><a href="Contacto.html"><i class="fas fa-envelope-open-text"></i> Contacto</a></li>
@@ -140,9 +145,13 @@
         </div>
     </footer>
 
-    <div class="qr-container">
-        <img src="img/img/univo_qr.png" alt="QR Escuela GEU" />
+    <div class="qr-container" id="qrContainer">
+        <img src="img/img/univo_qr.png" alt="QR Escuela GEU" id="qrImage">
     </div>
+
+    <button id="qrToggleBtn" class="qr-toggle-btn" style="display: none;">
+        <i class="fas fa-qrcode"></i>
+    </button>
 
     <!-- Script JS externo -->
     <script src="js/scripts_galeria.js"></script>
