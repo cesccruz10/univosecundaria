@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function showSlide(index) {
         slides.forEach(slide => slide.classList.remove('active'));
         indicators.forEach(indicator => indicator.classList.remove('active'));
-
         slides[index].classList.add('active');
         indicators[index].classList.add('active');
         currentSlide = index;
@@ -43,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
             slideInterval = setInterval(() => {
                 currentSlide = (currentSlide + 1) % slides.length;
                 showSlide(currentSlide);
-            }, 5000);  /*TIEMPO SLIDER*/ 
+            }, 5000);
         }
     }
 
@@ -65,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
         backgroundInterval = setInterval(() => {
             currentSlide = (currentSlide + 1) % backgroundImages.length;
             changeBackground();
-        }, 3000);   /*TIEMPO BACKGROUNG*/ 
+        }, 3000);
     }
 
     function stopBackgroundChange() {
@@ -90,7 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     changeBackground();  
     startBackgroundChange();  
-
     showSlide(0); 
     startSlider();
 
@@ -100,40 +98,61 @@ document.addEventListener("DOMContentLoaded", function () {
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('open');
+            menuToggle.classList.toggle('open');
+        });
+    }
+    document.addEventListener('click', function (event) {
+        if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+            navMenu.classList.remove('open');
+            menuToggle.classList.remove('open'); 
+        }
+    });
+
+    // === QR Logic ===
+    const qrContainer = document.querySelector('.qr-container');
+    const qrToggleBtn = document.getElementById('qrToggleBtn');
+
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
+
+    // Inicializar estado según el dispositivo
+    if (isMobile()) {
+        if (qrContainer) qrContainer.style.display = 'none';
+        if (qrToggleBtn) qrToggleBtn.style.display = 'flex';
+    } else {
+        if (qrContainer) qrContainer.style.display = 'block';
+        if (qrToggleBtn) qrToggleBtn.style.display = 'none';
+    }
+
+    // Ocultar QR al hacer clic
+    if (qrContainer && qrToggleBtn) {
+        qrContainer.addEventListener('click', () => {
+            qrContainer.classList.add('hide');
+
+            setTimeout(() => {
+                qrContainer.style.display = 'none';
+                qrToggleBtn.style.display = 'flex';
+            }, 400);
         });
 
-        const navLinks = navMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('open');
-            });
+        qrToggleBtn.addEventListener('click', () => {
+            qrContainer.style.display = 'block';
+            void qrContainer.offsetWidth; // Forzar reflow
+            qrContainer.classList.remove('hide');
+            qrContainer.style.transformOrigin = 'bottom right';
+            qrToggleBtn.style.display = 'none';
         });
     }
 
-const qrContainer = document.querySelector('.qr-container');
-const qrToggleBtn = document.getElementById('qrToggleBtn');
-
-// Ocultar QR al hacer clic
-qrContainer.addEventListener('click', () => {
-    qrContainer.classList.add('hide');
-
-    // Esperar a que termine la transición
-    setTimeout(() => {
-        qrContainer.style.display = 'none';
-        qrToggleBtn.style.display = 'flex';
-    }, 400);
-});
-
-// Mostrar QR al hacer clic en el botón
-qrToggleBtn.addEventListener('click', () => {
-    qrContainer.style.display = 'block';
-
-    // Forzar reflow para aplicar transición correctamente
-    void qrContainer.offsetWidth;
-
-    qrContainer.classList.remove('hide');
-    qrContainer.style.transformOrigin = 'bottom right';
-    qrToggleBtn.style.display = 'none';
-});
-    
+    // Si cambia el tamaño de la pantalla después de cargar
+    window.addEventListener('resize', () => {
+        if (isMobile()) {
+            if (qrContainer) qrContainer.style.display = 'none';
+            if (qrToggleBtn) qrToggleBtn.style.display = 'flex';
+        } else {
+            if (qrContainer) qrContainer.style.display = 'block';
+            if (qrToggleBtn) qrToggleBtn.style.display = 'none';
+        }
+    });
 });
