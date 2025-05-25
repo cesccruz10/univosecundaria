@@ -832,4 +832,10 @@ footer {
         display: none;
     }
 
+        /*FOOTER*/
+    .footer-content p {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+    }
+
 }
