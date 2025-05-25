@@ -754,4 +754,16 @@ footer {
         display: none;
     }
 
+        /*FOOTER*/
+    .footer-content p {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .decalogo-content h1 {
+        font-size: 27px;
+        padding-bottom: 8px;
+        margin-bottom: 20px;
+}
+
 }
