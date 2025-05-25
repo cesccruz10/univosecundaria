@@ -27,14 +27,14 @@ document.addEventListener("DOMContentLoaded", function () {
         stopSlider();
         currentSlide = (currentSlide + 1) % slides.length;
         showSlide(currentSlide);
-        startSlider();  
+        startSlider();
     }
 
     function prevSlide() {
         stopSlider();
         currentSlide = (currentSlide - 1 + slides.length) % slides.length;
         showSlide(currentSlide);
-        startSlider();  
+        startSlider();
     }
 
     function startSlider() {
@@ -48,16 +48,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function stopSlider() {
         clearInterval(slideInterval);
-        slideInterval = null;  
+        slideInterval = null;
     }
 
     function changeBackground() {
         const backgroundImage = backgroundImages[currentSlide % backgroundImages.length];
-        document.body.style.transition = 'background-image 1s ease-in-out';
-        document.body.style.backgroundImage = `url('${backgroundImage}')`;
-        document.body.style.backgroundSize = 'cover';
-        document.body.style.backgroundPosition = 'center';
-        document.body.style.backgroundAttachment = 'fixed';
+
+        const body = document.body;
+        const before = document.body.style;
+
+        // Cambia la imagen en ::before
+        body.style.setProperty('--background-url', `url('${backgroundImage}')`);
+
+        // Alternar clases para activar transición
+        body.classList.remove('background-active');
+
+        // Forzar reflow para que funcione la animación
+        void body.offsetWidth;
+
+        body.classList.add('background-active');
     }
 
     function startBackgroundChange() {
@@ -78,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
         indicator.addEventListener('click', () => {
             stopSlider();
             showSlide(index);
-            startSlider();  
+            startSlider();
         });
     });
 
@@ -87,9 +96,9 @@ document.addEventListener("DOMContentLoaded", function () {
         sliderContainer.addEventListener('mouseleave', startSlider);
     }
 
-    changeBackground();  
-    startBackgroundChange();  
-    showSlide(0); 
+    changeBackground();
+    startBackgroundChange();
+    showSlide(0);
     startSlider();
 
     const menuToggle = document.querySelector('.menu-toggle');
@@ -104,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener('click', function (event) {
         if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
             navMenu.classList.remove('open');
-            menuToggle.classList.remove('open'); 
+            menuToggle.classList.remove('open');
         }
     });
 
