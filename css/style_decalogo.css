@@ -754,7 +754,7 @@ footer {
         display: none;
     }
 
-        /*FOOTER*/
+    /*FOOTER*/
     .footer-content p {
         font-size: 14px;
         font-family: 'Roboto', sans-serif;
@@ -764,6 +764,18 @@ footer {
         font-size: 27px;
         padding-bottom: 8px;
         margin-bottom: 20px;
-}
+    }
+
+    /*TEXTO CONTAINER*/
+    p,
+    span,
+    li,
+    a {
+        color: #4d008b;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        line-height: 1.5;
+    }
 
 }
