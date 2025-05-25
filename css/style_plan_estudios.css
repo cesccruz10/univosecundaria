@@ -855,4 +855,45 @@ footer {
         font-size: 14px;
         font-family: 'Roboto', sans-serif;
     }
+
+    /*PLAN DE ESTUDIOS*/
+   .plan-estudios-section {
+        padding: 20px;
+        margin: 100px auto;
+        width: 95%;
+    }
+
+    .plan-estudios-section h2 {
+        font-size: 28px;
+    }
+
+    .plan-estudios-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .plan-estudios-card {
+        padding: 15px;
+        font-size: 15px;
+    }
+
+    .grado-titulo {
+        font-size: 18px;
+    }
+
+    .grado-numero {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .categoria h4 {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .categoria li {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
 }
