@@ -723,6 +723,11 @@ footer {
     display: none;
 }
 
+nav ul li a {
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+
     /*SLIDER RESPONSIVO*/
     .slide-content h1 {
         font-size: 1.8rem;
