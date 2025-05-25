@@ -25,23 +25,23 @@ body {
 
 /*FONDO DINAMICO*/
 body::before {
-    content: '';
+    content: "";
     position: fixed;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-image: var(--background-url);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: -1;
     transition: opacity 1s ease-in-out;
-    opacity: 0;
-}
-
-body.background-active::before {
+    z-index: -1;
     opacity: 1;
-}
+  }
+  
+  body.fade::before {
+    opacity: 0;
+  }
 
 .hero {
     margin-top: 80px; 
