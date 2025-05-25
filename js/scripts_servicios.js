@@ -15,29 +15,52 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-const qrContainer = document.querySelector('.qr-container');
-const qrToggleBtn = document.getElementById('qrToggleBtn');
+   // === QR Logic ===
+    const qrContainer = document.querySelector('.qr-container');
+    const qrToggleBtn = document.getElementById('qrToggleBtn');
 
-// Ocultar QR al hacer clic
-qrContainer.addEventListener('click', () => {
-    qrContainer.classList.add('hide');
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
 
-    // Esperar a que termine la transición
-    setTimeout(() => {
-        qrContainer.style.display = 'none';
-        qrToggleBtn.style.display = 'flex';
-    }, 400);
+    // Inicializar estado según el dispositivo
+    if (isMobile()) {
+        if (qrContainer) qrContainer.style.display = 'none';
+        if (qrToggleBtn) qrToggleBtn.style.display = 'flex';
+    } else {
+        if (qrContainer) qrContainer.style.display = 'block';
+        if (qrToggleBtn) qrToggleBtn.style.display = 'none';
+    }
+
+    // Ocultar QR al hacer clic
+    if (qrContainer && qrToggleBtn) {
+        qrContainer.addEventListener('click', () => {
+            qrContainer.classList.add('hide');
+
+            setTimeout(() => {
+                qrContainer.style.display = 'none';
+                qrToggleBtn.style.display = 'flex';
+            }, 400);
+        });
+
+        qrToggleBtn.addEventListener('click', () => {
+            qrContainer.style.display = 'block';
+            void qrContainer.offsetWidth; // Forzar reflow
+            qrContainer.classList.remove('hide');
+            qrContainer.style.transformOrigin = 'bottom right';
+            qrToggleBtn.style.display = 'none';
+        });
+    }
+
+    // Si cambia el tamaño de la pantalla después de cargar
+    window.addEventListener('resize', () => {
+        if (isMobile()) {
+            if (qrContainer) qrContainer.style.display = 'none';
+            if (qrToggleBtn) qrToggleBtn.style.display = 'flex';
+        } else {
+            if (qrContainer) qrContainer.style.display = 'block';
+            if (qrToggleBtn) qrToggleBtn.style.display = 'none';
+        }
+    });
 });
 
-// Mostrar QR al hacer clic en el botón
-qrToggleBtn.addEventListener('click', () => {
-    qrContainer.style.display = 'block';
-
-    // Forzar reflow para aplicar transición correctamente
-    void qrContainer.offsetWidth;
-
-    qrContainer.classList.remove('hide');
-    qrContainer.style.transformOrigin = 'bottom right';
-    qrToggleBtn.style.display = 'none';
-});
-});
