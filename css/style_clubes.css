@@ -816,4 +816,35 @@ footer {
         font-size: 14px;
         font-family: 'Roboto', sans-serif;
     }
+
+    /*CLUBES*/
+    .blur-title-container {
+        padding: 15px 25px;
+        margin-bottom: -30px;
+    }
+
+    .clubes-section {
+        padding: 30px 15px;
+    }
+
+    .clubes-section h2 {
+        font-size: 1.8em;
+    }
+
+    .clubes-grid {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    .club-card img {
+        height: 140px;
+    }
+
+    .club-card h3 {
+        font-size: 1em;
+        padding: 12px;
+        gap: 6px;
+    }
 }
