@@ -861,10 +861,12 @@ footer {
         padding: 20px;
         margin: 100px auto;
         width: 95%;
+        font-family: 'Poppins', sans-serif;
     }
 
     .plan-estudios-section h2 {
         font-size: 28px;
+        font-family: 'Poppins', sans-serif;
     }
 
     .plan-estudios-grid {
@@ -885,6 +887,7 @@ footer {
         width: 60px;
         height: 60px;
         font-size: 1.5rem;
+        font-family: 'Poppins', sans-serif;
     }
 
     .categoria h4 {
@@ -895,5 +898,6 @@ footer {
     .categoria li {
         font-size: 0.9rem;
         padding: 0.4rem 0.8rem;
+        font-family: 'Poppins', sans-serif;
     }
 }
