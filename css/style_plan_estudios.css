@@ -857,7 +857,7 @@ footer {
     }
 
     /*PLAN DE ESTUDIOS*/
-   .plan-estudios-section {
+    .plan-estudios-section {
         padding: 20px;
         margin: 100px auto;
         width: 95%;
@@ -899,5 +899,11 @@ footer {
         font-size: 0.9rem;
         padding: 0.4rem 0.8rem;
         font-family: 'Poppins', sans-serif;
+    }
+
+    /*TEXTO MENU*/
+    nav ul li a {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
     }
 }
