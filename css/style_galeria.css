@@ -808,11 +808,29 @@ footer {
     .logoGEU {
         display: none;
     }
-    
+
     /*FOOTER*/
     .footer-content p {
         font-size: 14px;
         font-family: 'Roboto', sans-serif;
+    }
+
+    /*TEXTO MENU*/
+    nav ul li a {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    /*TEXTO CONTAINER*/
+    p,
+    span,
+    li,
+    a {
+        color: #4d008b;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        line-height: 1.5;
     }
 
 }
