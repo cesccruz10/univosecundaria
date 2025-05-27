@@ -810,8 +810,8 @@ footer {
     .logoGEU {
         display: none;
     }
-    
-     /*FOOTER*/
+
+    /*FOOTER*/
     .footer-content p {
         font-size: 14px;
         font-family: 'Roboto', sans-serif;
@@ -846,5 +846,11 @@ footer {
         font-size: 1em;
         padding: 12px;
         gap: 6px;
+    }
+
+    /*TEXTO MENU*/
+    nav ul li a {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
     }
 }
