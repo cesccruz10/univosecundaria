@@ -779,9 +779,22 @@ footer {
         display: none;
     }
 
-     /*FOOTER*/
+    /*FOOTER*/
     .footer-content p {
         font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    /*TEXTO MENU*/
+    nav ul li a {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    p,
+    span,
+    li,
+    a {
         font-family: 'Roboto', sans-serif;
     }
 }
