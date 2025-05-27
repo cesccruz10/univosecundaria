@@ -5,18 +5,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const nextBtn = document.querySelector('.next-btn');
     const sliderContainer = document.querySelector('.slider-container');
 
+    // ✅ Imágenes de fondo distintas, pero sincronizadas con los slides
     const backgroundImages = [
-        'img/img/pics/IMG_2013.jpg',
-        'img/img/pics/IMG_2027.jpg',
-        'img/img/pics/IMG_2031.jpg'
+        'img/img/pics/IMG_2013.jpg',   // Fondo para slide 0
+        'img/img/pics/IMG_2027.jpg',   // Fondo para slide 1
+        'img/img/pics/IMG_2031.jpg'    // Fondo para slide 2
     ];
 
     let currentSlide = 0;
     let slideInterval;
-    let backgroundInterval;
 
     function isMobile() {
-        return window.innerWidth <= 768;
+        return window.innerWidth <= 1226;
     }
 
     function showSlide(index) {
@@ -25,58 +25,45 @@ document.addEventListener("DOMContentLoaded", function () {
         slides[index].classList.add('active');
         indicators[index].classList.add('active');
         currentSlide = index;
+        changeBackground(index); // ✅ Fondo cambia sincronizado
     }
 
     function nextSlide() {
         stopSlider();
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-        startSlider();  
+        const nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex);
+        startSlider();
     }
 
     function prevSlide() {
         stopSlider();
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(currentSlide);
-        startSlider();  
+        const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prevIndex);
+        startSlider();
     }
 
     function startSlider() {
         if (!slideInterval && slides.length > 1) {
             slideInterval = setInterval(() => {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
+                const nextIndex = (currentSlide + 1) % slides.length;
+                showSlide(nextIndex);
             }, 5000);
         }
     }
 
     function stopSlider() {
         clearInterval(slideInterval);
-        slideInterval = null;  
+        slideInterval = null;
     }
 
-    function changeBackground() {
-        if (isMobile()) return; // 🚫 Bloquea cambio en móviles
-
-        const backgroundImage = backgroundImages[currentSlide % backgroundImages.length];
+    function changeBackground(index) {
+        if (isMobile()) return;
+        const bg = backgroundImages[index % backgroundImages.length];
         document.body.style.transition = 'background-image 1s ease-in-out';
-        document.body.style.backgroundImage = `url('${backgroundImage}')`;
+        document.body.style.backgroundImage = `url('${bg}')`;
         document.body.style.backgroundSize = 'cover';
         document.body.style.backgroundPosition = 'center';
         document.body.style.backgroundAttachment = 'fixed';
-    }
-
-    function startBackgroundChange() {
-        if (isMobile()) return; // 🚫 Bloquea ciclo en móviles
-
-        backgroundInterval = setInterval(() => {
-            currentSlide = (currentSlide + 1) % backgroundImages.length;
-            changeBackground();
-        }, 3000);
-    }
-
-    function stopBackgroundChange() {
-        clearInterval(backgroundInterval);
     }
 
     if (nextBtn) nextBtn.addEventListener('click', nextSlide);
@@ -86,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         indicator.addEventListener('click', () => {
             stopSlider();
             showSlide(index);
-            startSlider();  
+            startSlider();
         });
     });
 
@@ -95,13 +82,11 @@ document.addEventListener("DOMContentLoaded", function () {
         sliderContainer.addEventListener('mouseleave', startSlider);
     }
 
-    // ✅ Solo inicia si no es móvil
     if (!isMobile()) {
-        changeBackground();  
-        startBackgroundChange();  
+        changeBackground(0);
     }
 
-    showSlide(0); 
+    showSlide(0);
     startSlider();
 
     // === Menú responsivo ===
@@ -118,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener('click', function (event) {
         if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
             navMenu.classList.remove('open');
-            menuToggle.classList.remove('open'); 
+            menuToggle.classList.remove('open');
         }
     });
 
@@ -126,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const qrContainer = document.querySelector('.qr-container');
     const qrToggleBtn = document.getElementById('qrToggleBtn');
 
-    // Inicializar estado según el dispositivo
     if (isMobile()) {
         if (qrContainer) qrContainer.style.display = 'none';
         if (qrToggleBtn) qrToggleBtn.style.display = 'flex';
@@ -153,17 +137,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Cambiar comportamiento al redimensionar
     window.addEventListener('resize', () => {
         if (isMobile()) {
             if (qrContainer) qrContainer.style.display = 'none';
             if (qrToggleBtn) qrToggleBtn.style.display = 'flex';
-            stopBackgroundChange(); // 🛑 Detiene si pasa a móvil
         } else {
             if (qrContainer) qrContainer.style.display = 'block';
             if (qrToggleBtn) qrToggleBtn.style.display = 'none';
-            changeBackground();
-            startBackgroundChange(); // ✅ Solo se reinicia si no es móvil
+            changeBackground(currentSlide);
         }
     });
 });
