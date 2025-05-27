@@ -604,7 +604,7 @@ footer {
 
 
 /* DISEÑO RESPONSIVO */
-@media (max-width: 768px) {
+@media (max-width: 1226px) {
 
     body {
         background-image: url('../img/img/pics/IMG_2013.jpg');
