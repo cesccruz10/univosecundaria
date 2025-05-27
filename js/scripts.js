@@ -15,6 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let slideInterval;
     let backgroundInterval;
 
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
+
     function showSlide(index) {
         slides.forEach(slide => slide.classList.remove('active'));
         indicators.forEach(indicator => indicator.classList.remove('active'));
@@ -52,6 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function changeBackground() {
+        if (isMobile()) return; // 🚫 Bloquea cambio en móviles
+
         const backgroundImage = backgroundImages[currentSlide % backgroundImages.length];
         document.body.style.transition = 'background-image 1s ease-in-out';
         document.body.style.backgroundImage = `url('${backgroundImage}')`;
@@ -61,6 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function startBackgroundChange() {
+        if (isMobile()) return; // 🚫 Bloquea ciclo en móviles
+
         backgroundInterval = setInterval(() => {
             currentSlide = (currentSlide + 1) % backgroundImages.length;
             changeBackground();
@@ -87,11 +95,16 @@ document.addEventListener("DOMContentLoaded", function () {
         sliderContainer.addEventListener('mouseleave', startSlider);
     }
 
-    changeBackground();  
-    startBackgroundChange();  
+    // ✅ Solo inicia si no es móvil
+    if (!isMobile()) {
+        changeBackground();  
+        startBackgroundChange();  
+    }
+
     showSlide(0); 
     startSlider();
 
+    // === Menú responsivo ===
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('nav ul');
 
@@ -101,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
             menuToggle.classList.toggle('open');
         });
     }
+
     document.addEventListener('click', function (event) {
         if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
             navMenu.classList.remove('open');
@@ -112,10 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const qrContainer = document.querySelector('.qr-container');
     const qrToggleBtn = document.getElementById('qrToggleBtn');
 
-    function isMobile() {
-        return window.innerWidth <= 768;
-    }
-
     // Inicializar estado según el dispositivo
     if (isMobile()) {
         if (qrContainer) qrContainer.style.display = 'none';
@@ -125,11 +135,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (qrToggleBtn) qrToggleBtn.style.display = 'none';
     }
 
-    // Ocultar QR al hacer clic
     if (qrContainer && qrToggleBtn) {
         qrContainer.addEventListener('click', () => {
             qrContainer.classList.add('hide');
-
             setTimeout(() => {
                 qrContainer.style.display = 'none';
                 qrToggleBtn.style.display = 'flex';
@@ -138,21 +146,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
         qrToggleBtn.addEventListener('click', () => {
             qrContainer.style.display = 'block';
-            void qrContainer.offsetWidth; // Forzar reflow
+            void qrContainer.offsetWidth;
             qrContainer.classList.remove('hide');
             qrContainer.style.transformOrigin = 'bottom right';
             qrToggleBtn.style.display = 'none';
         });
     }
 
-    // Si cambia el tamaño de la pantalla después de cargar
+    // Cambiar comportamiento al redimensionar
     window.addEventListener('resize', () => {
         if (isMobile()) {
             if (qrContainer) qrContainer.style.display = 'none';
             if (qrToggleBtn) qrToggleBtn.style.display = 'flex';
+            stopBackgroundChange(); // 🛑 Detiene si pasa a móvil
         } else {
             if (qrContainer) qrContainer.style.display = 'block';
             if (qrToggleBtn) qrToggleBtn.style.display = 'none';
+            changeBackground();
+            startBackgroundChange(); // ✅ Solo se reinicia si no es móvil
         }
     });
 });
