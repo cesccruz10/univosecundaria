@@ -5,11 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const nextBtn = document.querySelector('.next-btn');
     const sliderContainer = document.querySelector('.slider-container');
 
-    // ✅ Imágenes de fondo distintas, pero sincronizadas con los slides
+    // ✅ Imágenes de fondo distintas
     const backgroundImages = [
-        'img/img/pics/IMG_2013.jpg',   // Fondo para slide 0
-        'img/img/pics/IMG_2027.jpg',   // Fondo para slide 1
-        'img/img/pics/IMG_2031.jpg'    // Fondo para slide 2
+        'img/img/pics/DSC_0059.JPG',   // Fondo para slide 0
+        'img/img/pics/DSC_0095.JPG',   // Fondo para slide 1
+        'img/img/pics/DSC_0101.JPG'    // Fondo para slide 2
     ];
 
     let currentSlide = 0;
@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
         slides[index].classList.add('active');
         indicators[index].classList.add('active');
         currentSlide = index;
-        changeBackground(index); // ✅ Fondo cambia sincronizado
     }
 
     function nextSlide() {
@@ -47,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
             slideInterval = setInterval(() => {
                 const nextIndex = (currentSlide + 1) % slides.length;
                 showSlide(nextIndex);
-            }, 5000);
+            }, 6000);
         }
     }
 
@@ -82,12 +81,20 @@ document.addEventListener("DOMContentLoaded", function () {
         sliderContainer.addEventListener('mouseleave', startSlider);
     }
 
-    if (!isMobile()) {
-        changeBackground(0);
-    }
-
+    // Mostrar primer slide
     showSlide(0);
     startSlider();
+
+    // Cambiar el fondo cada 10 segundos
+    if (!isMobile()) {
+        changeBackground(0);
+        let bgIndex = 0;
+
+        setInterval(() => {
+            bgIndex = (bgIndex + 1) % backgroundImages.length;
+            changeBackground(bgIndex);
+        }, 10000);
+    }
 
     // === Menú responsivo ===
     const menuToggle = document.querySelector('.menu-toggle');
