@@ -16,7 +16,6 @@
 }
 
 body {
-    background: url('../img/img/pics/IMG_2013.jpg') no-repeat center center fixed;
     background-size: cover;
     color: var(--color-gris-oscuro);
     line-height: 1.6;
@@ -607,7 +606,6 @@ footer {
 @media (max-width: 1226px) {
 
     body {
-        background-image: url('../img/img/pics/IMG_2013.jpg');
         background-size: cover;
         background-position: center;
         background-attachment: scroll;

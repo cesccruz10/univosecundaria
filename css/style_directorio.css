@@ -22,7 +22,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: url('../img/img/universidad_del_valle_de_orizaba_cover.jpeg') no-repeat center center fixed;
+    background: url('../img/img/pics/DSC_0096.JPG') no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -509,7 +509,7 @@ nav ul li:hover .submenu {
 
 .directorio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 20px;
     margin-top: 20px;
 }

@@ -22,7 +22,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: url('../img/img/pics/IMG_2025.jpg') no-repeat center center fixed;
+    background: url('../img/img/pics/DSC_0096.JPG') no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -793,7 +793,7 @@ footer {
         font-family: 'Roboto', sans-serif;
     }
 
-        /*TEXTO CONTAINER*/
+    /*TEXTO CONTAINER*/
     p,
     span,
     li,
